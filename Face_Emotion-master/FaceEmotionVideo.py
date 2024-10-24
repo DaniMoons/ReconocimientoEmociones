@@ -14,15 +14,21 @@ time_prevframe = 0
 classes = ['enojado','asco','miedo','feliz','neutral','triste','sorprendido']
 
 # Cargamos el  modelo de detección de rostros
-prototxtPath = r"face_detector\deploy.prototxt"
-weightsPath = r"face_detector\res10_300x300_ssd_iter_140000.caffemodel"
+prototxtPath = r"Face_Emotion-master\face_detector\deploy.prototxt"
+weightsPath = r"Face_Emotion-master\face_detector\res10_300x300_ssd_iter_140000.caffemodel"
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
+
+
+
+
+
 # Carga el detector de clasificación de emociones
-emotionModel = load_model("modelFEC.h5")
+emotionModel = load_model("Face_Emotion-master/modelFEC.h5")
+
 
 # Se crea la captura de video
-cam = cv2.VideoCapture(1,cv2.CAP_DSHOW)
+cam = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 # Toma la imagen, los modelos de detección de rostros y mascarillas 
 # Retorna las localizaciones de los rostros y las predicciones de emociones de cada rostro
 def predict_emotion(frame,faceNet,emotionModel):
